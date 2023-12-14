@@ -1,0 +1,604 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    overflow-y: hidden;
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+    height: 9vh;
+    background: linear-gradient(135deg, orange 60%, cyan);
+    border: 4px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading {
+    font-size: 2.8vw; /* Approximately equivalent to 40px on average screens */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    flex-grow: 1;
+    margin-left: 1.5%; /* Adjust this percentage as needed based on your layout */
+    color: rgb(255, 0, 0);
+}
+
+
+.navbar .button {
+    margin-right: 1%; /* Adjust this percentage as needed based on your layout */
+    width: 13%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    background-color: rgb(255, 0, 0);
+    color: aliceblue;
+    font-size: 1.5vw; /* Approximately equivalent to 20px on average screens */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+}
+
+
+.empdetails {
+    position: relative;
+    width: 50%;
+    min-height: 92vh;
+    background-image: linear-gradient(90deg, #5e781f 0%, #921bc1 35%, #00d4ff 100%);
+    border: 2px solid black; 
+    padding: 1%; 
+    float: left; 
+}
+
+
+.frame1 {
+    color: rgb(0, 198, 253);
+    font-size: 2.0vw; /* Use viewport width units for font size */
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.frame1::before,
+.frame1::after {
+    content: '';
+    flex-grow: 1;
+    height: 0.2vh; /* Use viewport height units for height */
+    background: white;
+    margin: 0 1vw; /* Use viewport width units for margin */
+}
+
+
+.empsalarydetails {
+    position: relative;
+    width: 50%; /* 50% */
+    height: 48vh; /* Use viewport height units for height */
+    background: linear-gradient(90deg, #f8ff00 0%, #3ad59f 100%);
+    border: 2px solid black; /* Adjust this percentage as needed */
+    padding: 1%; /* Adjust this percentage as needed */
+    margin-left: 50%; /* 50% (This value might need further adjustment based on your layout) */
+}
+
+
+.salaryreceipt {
+    position: relative;
+    width: 50%; /* 50% */
+    height: 44vh; /* Use viewport height units for height */
+    background: linear-gradient(90deg, #FDBB2D 0%, #3A1C71 100%);
+    border: 2px solid black; /* Adjust this percentage as needed */
+    padding: 1%; /* Adjust this percentage as needed */
+    margin-left: 50%; /* 50% (This value might need further adjustment based on your layout) */
+}
+
+
+.innerframe1 {
+    margin: 2%; /* Use a percentage value based on your design needs */
+}
+
+
+.innertext {
+    position: absolute;
+    font-size: 2.1vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.1%; /* Convert 3px to a percentage */
+    margin-top: 0.33%; /* Convert 10px to a percentage */
+}
+
+.allinput {
+    position: absolute;
+    width: 25%; /* Adjust this percentage as needed based on your layout */
+    height: 5%; /* Adjust this percentage as needed based on your design */
+    margin-left: 32%; /* Adjust this percentage as needed based on your layout */
+    font-size: 2.0vw; /* Keep the font size in pixels */
+    margin-top: 1%; /* Adjust this percentage as needed based on your design */
+}
+
+
+.search {
+    width: 23%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(255, 136, 0);
+    color: aliceblue;
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 60%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.5vh; /* Use viewport height units for margin */
+}
+
+
+
+.combox {
+    margin-top: 2.8%;
+}
+
+.innertext1 {
+    position: absolute;
+    font-size: 2.0vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.1%; /* Convert 3px to a percentage */
+}
+
+
+.allinput1 {
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 24%; /* Adjust this percentage as needed based on your layout */
+    font-size: 1.7vw; /* Approximately equivalent to 25px on average screens */
+}
+
+
+.innertext2 {
+    position: absolute;
+    font-size: 2.0vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.3%; /* Convert 3px to a percentage */
+    margin-left: 50%; /* Adjust this percentage as needed based on your layout */
+}
+
+
+.allinput2 {
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 65%; /* Adjust this percentage as needed based on your layout */
+    font-size: 1.5vw; /* Approximately equivalent to 25px on average screens */
+}
+
+
+.innertext3 {
+    position: absolute;
+    font-size: 2.0vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.1%; /* Convert 3px to a percentage */
+    margin-left: 3%; /* Adjust this percentage as needed based on your layout */
+}
+
+
+.innertext4 {
+    position: absolute;
+    font-size: 2.0vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.1%; /* Convert 3px to a percentage */
+    margin-left: 4%; /* Adjust this percentage as needed based on your layout */
+}
+
+
+.allinput4 {
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 16%; /* Adjust this percentage as needed based on your layout */
+    font-size: 1.8vw; /* Approximately equivalent to 25px on average screens */
+}
+
+
+.innertext5 {
+    position: absolute;
+    font-size: 2.0vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    padding-top: 0.1%; /* Convert 3px to a percentage */
+    margin-left: 43%; /* Adjust this percentage as needed based on your layout */
+}
+
+
+.allinput5 {
+    position: absolute;
+    width: 23%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 67%; /* Adjust this percentage as needed based on your layout */
+    font-size: 1.5vw; /* Approximately equivalent to 25px on average screens */
+}
+
+
+.allinput6 {
+    position: absolute;
+    width: 27%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 14%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.6%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+
+.allinput7 {
+    position: absolute;
+    width: 72%; /* Adjust this percentage as needed based on your layout */
+    height: 16vh; /* Use viewport height units for height */
+    margin-left: 18%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.7%; /* Convert 7px to a percentage */
+    font-size: 1.5vw; /* Approximately equivalent to 25px on average screens */
+    font-weight: bold;
+}
+/* End of Employee Details */
+
+/* Employee Salary Details*/
+
+.comboxemp{
+    margin-top: 2.8%;
+}
+
+.emptext1{
+    position: absolute;
+    font-size: 1.8vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+}
+
+.empallinput1{
+    position: absolute;
+    width: 17%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 13%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext2{
+    position: absolute;
+    font-size: 1.8vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 31%;
+}
+
+.empallinput2{
+    position: absolute;
+    width: 17%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 41%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext3{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 59%;
+    margin-top: 0.4%;
+}
+
+.empallinput3{
+    position: absolute;
+    width: 13%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 79%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext4{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 0;
+    margin-top: 0.4%;
+}
+
+.empallinput4{
+    position: absolute;
+    width: 13%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 17%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext5{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 33%;
+    margin-top: 0.4%;
+}
+
+.empallinput5{
+    position: absolute;
+    width: 13%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 47%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext6{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 63%;
+    margin-top: 0.4%;
+}
+
+.empallinput6{
+    position: absolute;
+    width: 13%; /* Adjust this percentage as needed based on your layout */
+    height: 4vh; /* Use viewport height units for height */
+    margin-left: 77%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext7{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 0%;
+    margin-top: 0.6%;
+}
+
+.empallinput7{
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 25%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext8{
+    position: absolute;
+    font-size: 1.6vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 50%;
+    margin-top: 0.6%;
+}
+
+.empallinput8{
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 67%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.emptext9{
+    position: absolute;
+    font-size: 1.8vw; /* Approximately equivalent to 30px on average screens */
+    font-weight: bold;
+    margin-left: 3%;
+    margin-top: 0.4%;
+}
+
+.empallinput9{
+    background-color: rgb(156, 139, 139);
+    position: absolute;
+    width: 22%; /* Adjust this percentage as needed based on your layout */
+    height: 5vh; /* Use viewport height units for height */
+    margin-left: 24%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0.1%; /* Convert 7px to a percentage */
+    font-size: 1.3vw; /* Approximately equivalent to 15px on average screens */
+    font-weight: bold;
+}
+
+.calculate {
+    width: 23%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(0, 200, 255);
+    color: aliceblue;
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 48%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0vh; /* Use viewport height units for margin */
+}
+
+.save {
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(229, 94, 94);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 0%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0vh; /* Use viewport height units for margin */
+}
+
+.clear {
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(218, 229, 94);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 24%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0vh; /* Use viewport height units for margin */
+}
+
+.update{
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(94, 209, 229);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 48%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0vh; /* Use viewport height units for margin */
+}
+
+.delete{
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(229, 94, 209);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 72%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 0vh; /* Use viewport height units for margin */
+}
+
+.textarea1{
+    white-space: pre-line;
+    font-family: monospace;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 56%;
+    height: 32vh;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+
+.print{
+    position: absolute;
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(94, 229, 112);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 65%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 3vh; /* Use viewport height units for margin */
+}
+
+.logout{
+    position: absolute;
+    width: 21%; /* Adjust this percentage as needed based on your layout */
+    height: 5.2vh; /* Use viewport height units for height */
+    background-color: rgb(229, 94, 110);
+    color: rgb(0, 0, 0);
+    font-size: 1.7vw; /* Use viewport width units for font size */
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5%; /* Adjust this percentage as needed based on your design */
+    cursor: pointer;
+    position: absolute;
+    margin-left: 65%; /* Adjust this percentage as needed based on your layout */
+    margin-top: 16vh; /* Use viewport height units for margin */
+}
+
+/* Styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Ensure the modal is on top of other content */
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70%;
+    height: 70%;
+}
+
+.close {
+    position: fixed;
+    top: 6.4%;
+    right: 15%;
+    cursor: pointer;
+    width: 2%;
+    height: 4%;
+    background-color: rgb(255, 0, 0);
+    border: 1px solid black;
+    color: #fff;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.close:hover {
+    background-color: #ff0000; /* Change the background color on hover, for example to a brighter red */
+}
+
+.toptable {
+    max-height: 65vh; /* Set a maximum height for the table container */
+    overflow-y: auto; /* Add a vertical scrollbar when the content overflows */
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Style table header cells */
+th {
+    position: sticky;
+    border: 2px solid black;
+    padding: 10px;
+    top: 0;
+    background-color: #c251cc;
+    font-weight: bold;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Style table data cells */
+td {
+    border: 2px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Style table rows on hover */
+tr:hover {
+    background-color: rgb(169, 180, 184);
+}

@@ -1,0 +1,28 @@
+monaco.languages.registerCompletionItemProvider('javascript', {
+    triggerCharacters: ['!'],
+    provideCompletionItems: function (model, position) {
+        return {
+            suggestions: [
+                {
+                    label: 'div',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'div',
+                    range: new monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column)
+                },
+                {
+                    label: 'span',
+                    kind: monaco.languages.CompletionItemKind.Keyword,
+                    insertText: 'span',
+                    range: new monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column)
+                },
+                {
+                    label: 'HTML Template',
+                    kind: monaco.languages.CompletionItemKind.Snippet,
+                    insertText: '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0">\n  <title>${1:Document}</title>\n</head>\n<body>\n  ${2}\n</body>\n</html>',
+                    range: new monaco.Range(position.lineNumber, position.column, position.lineNumber, position.column)
+                }
+                // Add more HTML suggestions as needed
+            ]
+        };
+    }
+});

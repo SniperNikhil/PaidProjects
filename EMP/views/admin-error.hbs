@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-code {
+            font-size: 3em;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .error-message {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .error-description {
+            font-size: 1em;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const backLink = document.querySelector(".back-link");
+
+            backLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                history.back();       
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="error-container">
+        <div class="error-code">Oops!</div>
+        <div class="error-message">Something went wrong.</div>
+        <div class="error-description">
+            We're sorry, but an unexpected error occurred while processing your request.
+        </div>
+        <div class="error-description">
+            Error: {{error}}
+        </div>
+        <a href="restart" class="back-link">Back to Previous Page</a>
+    </div>
+</body>
+
+</html>

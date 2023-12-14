@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Compiler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="header">
+        <select id="languageDropdown">
+            <option value="javascript">Nodejs</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+        </select>
+        <h1>Online Compiler</h1>
+        <button id="runButton">Run</button>
+    </div>
+
+    <div id="editor-container">
+        <div id="editor"></div>
+        <div id="output-container">
+            <div class="arg" style="display: flex;justify-content: space-between; padding-left: 20px;height: 50px;">
+                <h2
+                    style="margin-top: 12px; font-size: 24px; color: #ff0000; text-align: center; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+                    Output</h2>
+                <input type="text" id="argument1" placeholder="Enter your arguments here and please give a space">
+            </div>
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <div id="editor-container1">
+        <div id="project-notes">
+            <h1>Note :</h1>
+            <p>1)Please Note that if you code accepts some arguments from
+                command line or using any inbuilt method like Scanner of java
+                just add the arguments with a space between them in the input
+                field above the output window.</p>
+            <p>2)Please Note this compiler does not support gui based codes or framework
+                this compiler is just for practice code or text based codes.</p>
+            <p>3)You can install External Packages also just check on right side div.</p>
+            <p>4)The code editor automatically gives you suggesstion like vscode does.</p>
+            <p>5)We have used Monaco editor here which is same implemented on vscode. </p>
+            <p>6)The Compiler only Supports nodejs or javascript ,python and java. </p>
+        </div>
+        <div id="installdependency">
+            <div class="loading">
+                <div class="anim"></div>
+            </div>
+            <h1>Install <br> External Packages</h1>
+            <input type="text" id="packag" placeholder="Enter Package Name">
+            <button onclick="startLoading()">Install</button>
+        </div>
+    </div>
+
+    <div id="footer">
+        <h4 style="margin-bottom: 3px;">© 2023 Coding.Alphas</h4>
+        <h3> Developed By Nikhil</h3>
+    </div>
+
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script src="https://unpkg.com/monaco-editor@0.29.0/min/vs/loader.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

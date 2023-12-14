@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="heading">
+            <span>Employee Payroll management</span>
+        </div>
+        <button type="submit" class="button" id="openModal">All Employee</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <div class="toptable">
+                    <table class="table">
+                        <thead>
+                            <th>Empcode</th>
+                            <th>Designation</th>
+                            <th>DOJ</th>
+                            <th>Name</th>
+                            <th>DOB</th>
+                            <th>Age</th>
+                            <th>Experience</th>
+                            <th>Gender</th>
+                            <th>Proffid</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+
+                            <th>Month</th>
+                            <th>Year</th>
+                            <th>Basic Salary</th>
+                            <th>Toatal Days</th>
+                            <th>Absents</th>
+                            <th>Medical</th>
+                            <th>Provident Fund</th>
+                            <th>Convence</th>
+                            <th>Netsalary</th>
+                        </thead>
+                        {{#each allemployee}}
+                        <tr>
+                            <td>{{this.empcode}}</td>
+                            <td>{{this.designation}}</td>
+                            <td>{{this.doj}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.dob}}</td>
+                            <td>{{this.age}}</td>
+                            <td>{{this.experience}}</td>
+                            <td>{{this.gender}}</td>
+                            <td>{{this.proffid}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{this.contact}}</td>
+                            <td>{{this.address}}</td>
+
+                            <td>{{this.month}}</td>
+                            <td>{{this.year}}</td>
+                            <td>{{this.bsal}}</td>
+                            <td>{{this.tdays}}</td>
+                            <td>{{this.absents}}</td>
+                            <td>{{this.medical}}</td>
+                            <td>{{this.pfund}}</td>
+                            <td>{{this.convence}}</td>
+                            <td>{{this.netsalary}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="empdetails">
+        <span class="frame1">Employee Details</span>
+        <div class="innerframe1">
+            <div class="combox">
+                <label class="innertext">Employee Code : </label>
+                <input type="text" name="empcode" class="allinput" id="empcode" required>
+                <button type="submit" class="search" id="search">Search</button>
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext1">Designation : </label>
+                <input type="text" name="designation" class="allinput1" id="designation" required>
+
+                <label class="innertext2">D.O.J : </label>
+                <input type="date" name="doj" class="allinput2" id="doj">
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext3">Name : </label>
+                <input type="text" name="name" class="allinput1" id="name">
+
+                <label class="innertext2">D.O.B : </label>
+                <input type="date" name="dob" class="allinput2" id="dob" oninput="calculateAge()">
+
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext4">Age : </label>
+                <input type="text" name="age" class="allinput4" id="age">
+
+                <label class="innertext5">Experience : </label>
+                <input type="text" name="experience" class="allinput5" id="experience">
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext1">Gender : </label>
+                <select name="gender" class="allinput4" id="gender">
+                    <option>Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+
+                <label class="innertext5">Proof ID : </label>
+                <input type="text" name="proffid" class="allinput5" id="proffid">
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext1">Email : </label>
+                <input type="email" name="email" class="allinput6" id="email">
+
+                <label class="innertext5">Contact No : </label>
+                <input type="text" name="contact" class="allinput5" id="contact">
+            </div>
+            <br><br><br>
+            <div class="combox">
+                <label class="innertext1">Address : </label>
+                <textarea name="address" class="allinput7" id="address"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="empsalarydetails">
+        <span class="frame1">Employee Salary Details</span>
+        <div class="innerframe1">
+            <div class="comboxemp">
+                <label class="emptext1">Month : </label>
+                <select class="empallinput1" name="month" id="month">
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>September</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                </select>
+
+                <label class="emptext2">Year : </label>
+                <select class="empallinput2" id="inputYear" name="year"></select>
+
+                <label class="emptext3">Basic Salary : </label>
+                <input type="text" name="bsalary" class="empallinput3" id="bsalary">
+            </div>
+            <br><br>
+            <div class="comboxemp">
+                <label class="emptext4">Total Days : </label>
+                <input type="text" name="tdays" class="empallinput4" id="tdays">
+
+                <label class="emptext5">Absents : </label>
+                <input type="text" name="absents" class="empallinput5" id="absents">
+
+                <label class="emptext6">Medical : </label>
+                <input type="text" name="medical" class="empallinput6" id="medical">
+            </div>
+            <br><br>
+            <div class="comboxemp">
+                <label class="emptext7">Provident Fund : </label>
+                <input type="text" name="pfund" class="empallinput7" id="pfund">
+
+                <label class="emptext8">Convence : </label>
+                <input type="text" name="convence" class="empallinput8" id="convence">
+            </div>
+            <br><br>
+            <div class="comboxemp">
+                <label class="emptext9">Net Salary : </label>
+                <input type="text" name="netsalary" class="empallinput9" id="netsalary">
+                <button type="button" class="calculate" id="calnetsalary">Calculate</button>
+            </div>
+            <br><br>
+            <div class="comboxemp">
+                <button type="submit" class="save" id="save">Save</button>
+                <button type="submit" class="clear" id="clear">Clear</button>
+                <button type="submit" class="update" id="update">Update</button>
+                <button type="submit" class="delete" id="delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="salaryreceipt">
+        <span class="frame1">Salary Receipt</span>
+        <div class="innerframe1">
+            <div class="combox">
+                <button type="submit" class="print" id="print">Print</button>
+                <form action="/logout" method="post" onsubmit="return confirm('Do you want to logout?');">
+                    <button type="submit" class="logout">Logout</button>
+                </form>
+                <textarea class="textarea1" id="template">
+                    {{textarea}}
+                </textarea>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
