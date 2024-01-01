@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Add - Students</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+        .logo1 {
+            float: left;
+            justify-items: left;
+            margin-top: 14px;
+
+        }
+
+        .logo2 {
+            margin-left: 15px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn1 {
+            font-size: 22px;
+            margin-top: -5px;
+            margin-left: 15px;
+            width: 200px;
+            height: 50px;
+        }
+
+        hr {
+            height: 1px;
+            background-color: rgb(9, 7, 7);
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Common Header File -->
+    <div id="headnavbar">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#headnavbar').load("/common/header.hbs");
+        });
+    </script>
+
+    <div class="main-wrapper">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <div class="flex">
+                                {{#if imge2}}
+                                <img src="backend/images/{{imge2}}" class="img-fluid" alt="">
+                                {{else}}
+                                <img src="backend/images/7.jpg" class="img-fluid" alt="">
+                                {{/if}}
+                            </div>
+                        </li>
+                        <li class="menu-title">
+                            <span>Main Menu</span>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="fas fa-user-graduate"></i> <span> Admin Dashboard</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="admin">Back To Admin Page</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="admin-profile"><i class="fas fa-user-graduate"></i> <span> My Profile</span> <span
+                                    class="menu-arrow"></span></a>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="bi bi-layers-fill"></i> <span> Admins</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="admin-adminlist">Admin List</a></li>
+                                <li><a href="admin-addadmin">Admin Add</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="submenu active">
+                            <a href="#"><i class="bi bi-person-circle"></i> <span> Students</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="admin-studentlist">Student List</a></li>
+                                <li><a href="admin-addstudent">Student Add</a></li>
+                                <li><a href="admin-bulkadding">Bulk Adding</a></li>
+                            </ul>
+                        </li>
+                        <li class="submenu">
+                            <a href="#"><i class="bi bi-person-video"></i> <span> Teachers</span> <span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="admin-teacherlist">Teacher List</a></li>
+
+                                <li><a href="admin-addteacher">Teacher Add</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="menu-title">
+                            <span>Chat Application</span>
+                        </li>
+                        <li>
+                            <a href="admin-chatapp"><i class="fas fa-holly-berry"></i> <span>Chat App</span></a>
+                        </li>
+
+                        <li class="menu-title">
+                            <span>Pages</span>
+                        </li>
+                        <li>
+                            <a href="admin-feedbackresult"><i class="fas fa-file"></i> <span>Feedback Result</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Upload Student in Bulk</h3>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="alert alert-info" role="alert">
+                {{success}}
+            </div>
+            <!--<h5 class="page-title">Upload an Excel file</h5><br>-->
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label class="form-label">Upload an Excel file</label><br>
+                <input type="file" name="file" accept=".xlsx">
+                <button type="submit" class="btn btn-primary btn1">Upload</button>
+            </form>
+            <hr><br><br>
+            <div style="background-color: #f0f0f0; padding: 10px;">
+                <h5 style="color: #333; font-size: 18px; font-weight: bold;">Note:</h5>
+                <p style="color: #555; font-size: 16px;">
+                    Your Excel Sheet must contain a column with the names "email" and "dob". The "dob" value will be set
+                    as the password for the student. The email field must be unique, see that duplicate data will be
+                    automatically ignored by API when adding students to the database. After successfully adding the student data from
+                    Excel to the database, the respective student can log in using their email and password (dob). For Any Changes contact
+                    the developer.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="assets/js/script.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

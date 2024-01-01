@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>3d login page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="3d Login Page/style1.css">
+
+</head>
+
+<body>
+    <div class="section">
+        <div class="container">
+            <div class="row full-height justify-content-center">
+                <div class="col-12 text-center align-self-center py-5">
+                    <div class="alert alert-info" role="alert">
+                        {{success}}
+                    </div>
+                    <div class="section pb-5 pt-5 pt-sm-2 text-center">
+                        <h6 class="mb-0 pb-3"><span>Log In</span><span>Sign Up</span></h6>
+                        <input type="checkbox" class="checkbox" id="reg-log">
+                        <label for="reg-log"></label>
+                        <div class="card-wrap mx-auto">
+                            <div class="card-wrapper">
+                                <div class="card-front">
+                                    <div class="center-wrap">
+                                        <div class="section text-cemter">
+                                            <form action="/login" method="POST" id="add_user">
+                                                <h4 class="mb-4 pb-3">Log In</h4>
+                                                <div class="form-group">
+                                                    <input type="email" class="form-style" name="email"
+                                                        placeholder="Your Email" required>
+                                                    <i class="input-icon bi bi-envelope"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style" name="password"
+                                                        placeholder="Your Password" required>
+                                                    <i class="input-icon bi bi-key-fill"></i>
+                                                </div>
+                                                <input type="submit" class="btn mt-4" id="bttn" value="Submit">
+                                                <p class="mb-0 mt-4 text-center">
+                                                    <a href="forgotpassword" class="link">Forgot your Password?</a>
+                                                </p>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="center-wrap">
+                                        <div class="section text-center">
+                                            <form action="/register" method="POST">
+                                                <h4 class="mb-4 pb-3">Sign Up</h4>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-style" placeholder="Your Name"
+                                                        name="first_name" required>
+                                                    <i class="input-icon bi bi-pencil-square"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="email" class="form-style" placeholder="Your Email"
+                                                        name="email" required>
+                                                    <i class="input-icon bi bi-pencil-square"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style"
+                                                        placeholder="Your Password" name="password" required>
+                                                    <i class="input-icon bi bi-key-fill"></i>
+                                                </div>
+                                                <div class="form-group mt-2">
+                                                    <input type="password" class="form-style"
+                                                        placeholder="Enter Licence Key(Only for admins)"
+                                                        name="licence_key">
+                                                    <i class="input-icon bi bi-gear-fill"></i>
+                                                </div>
+                                                <input type="submit" class="btn mt-4" id="bttn" value="Submit">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

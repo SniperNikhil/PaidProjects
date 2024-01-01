@@ -1,0 +1,100 @@
+body{
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+/*Login Button Css*/
+.btn{
+    background-color: #fcfcff;
+    color: #000;
+    font-weight: 600;
+    font-size: 20px;
+    width: 110px;
+}
+
+/*Navbar Background Color*/
+.navbar{
+    background: #0000ff;
+}
+
+/*Footer Css*/
+.foot{
+    background: #000;
+    border-color: #fff;
+    border-width: 10px;
+}
+
+.hello{
+    height: 42px;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    transition: all 200ms linear;
+    padding: 0 30px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    border-radius:  10px;
+    background-color: #ff832c;
+    color: #fff;
+    margin-right: 30px;
+}
+
+/*SideBar Top Margin Css*/
+.sidebar{
+    margin-top: 55px;
+}
+
+.home-content{
+    margin-top: 61px;
+    position: fixed;
+}
+
+ /*SideBar Open and Close added to navbar*/
+.navbar .container-fluid .bx-menu{
+    color: #fcfcff;
+    font-size: 38px;
+    margin-left: 8px;
+    cursor: pointer; 
+}
+
+/*Gss BCA Name Css*/
+.nav-font{
+    color: #fcfcff;
+    font-size: 28px;
+    margin-left: 65px;
+    position: fixed;
+}
+
+/*div in which external file is loaded ,
+used to load in slow motion*/
+#login1{
+    transition: all 1s ease-out;
+}
+
+/*Footer Css*/
+.text-center{
+    height: 65px;
+}
+
+/*div in which external file is loaded,
+used to set div in Correct Position*/
+.log{
+    width: auto;
+    height: 622px;
+    margin-top: 60px;
+    margin-left: 78px;
+    position: relative;
+}
+
+/*Carosel Slides Css*/
+.carousel-inner {
+    height: 350px;
+    display: inline-flex;
+    position: relative;
+} 

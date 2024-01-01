@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Admin - Dashboard</title>
+    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,400&amp;display=swap">
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <style>
+        .logo1 {
+            float: left;
+            justify-items: left;
+            margin-top: 14px;
+        }
+
+        .logo2 {
+            margin-left: 15px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Styling for the dropdown list */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+            position: absolute;
+            background-color: #edc16f;
+            box-shadow: 0px 8px 16px 0px rgba(245, 242, 242, 0.935);
+            z-index: 1;
+        }
+
+        .dropdown-content label {
+            display: block;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .card {
+            width: 90%;
+            max-width: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .question {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            margin-top: 0;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .options input[type="radio"] {
+            margin-bottom: 10px;
+        }
+
+
+
+        @media screen and (max-width: 480px) {
+            .options input[type="radio"] {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Common Header File -->
+    <div id="headnavbar">
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#headnavbar').load("/common/studentheader.hbs");
+        });
+    </script>
+
+    <div class="main-wrapper">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <div class="flex">
+                                {{#if imge}}
+                                <img src="backend/images/{{imge}}" class="img-fluid" alt="">
+                                {{else}}
+                                <img src="backend/images/7.jpg" class="img-fluid" alt="">
+                                {{/if}}
+                            </div>
+                        </li>
+                        <li class="menu-title">
+                            <span>Main Menu</span>
+                        </li>
+                        <li class="submenu">
+                            <a href="student"><i class="bi bi-person-circle"></i> <span> Student Dashboard</span><span
+                                    class="menu-arrow"></span></a>
+                            <ul>
+                                <li><a href="student">Back To Student Page</a></li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <a href="student-profile"><i class="fas fa-user-graduate"></i> <span> My Profile </span>
+                                <span class="menu-arrow"></span></a>
+                        </li>
+
+                        <li class="menu-title">
+                            <span>Chat Application</span>
+                        </li>
+                        <li>
+                            <a href="student-chatapp"><i class="fas fa-holly-berry"></i> <span>Chat App</span></a>
+                        </li>
+                        <li class="submenu active">
+                            <a href="student-feedback"><i class="fas fa-clipboard-list"></i> <span>Feedback</span><span
+                                    class="menu-arrow"></span></a>
+                        </li>
+                        <li class="menu-title">
+                            <span>Notes</span>
+                        </li>
+                        <li>
+                            <a href="student-viewnotes"><i class="fas fa-file"></i> <span>View Notes</span>
+                                <span class="menu-arrow"></span></a>
+                        </li>
+                        <li class="menu-title">
+                            <span>Pages</span>
+                        </li>
+
+                        <li>
+                            <a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Pages</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="content container-fluid">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h2>Feedback</h2>
+                    <hr class="hr">
+                    <form id="feedbackForm" action="/submit-feedback" method="post">
+                        <div class="card">
+                            <div class="card-body">
+                                <div style="display: flex;">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Select Teacher</label>
+                                        <select class="form-control form-control-lg" name="email" id="email">
+                                            <!-- Inside the <select> element -->
+                                            {{#each teachers}}
+                                            <option>{{this}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr">
+                        <div class="question">
+                            <p id="Q1">Question 1: How was the overall experience?</p>
+                            <div class="options">
+                                <input type="radio" name="Q1A" value="A"> Bad
+                                <input type="radio" name="Q1B" value="B"> Neutral
+                                <input type="radio" name="Q1C" value="C"> Good
+                                <input type="radio" name="Q1D" value="D"> Very Good
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p id="Q2">Question 2: Did you find the product useful?</p>
+                            <div class="options">
+                                <input type="radio" name="Q2A" value="A"> Bad
+                                <input type="radio" name="Q2B" value="B"> Neutral
+                                <input type="radio" name="Q2C" value="C"> Good
+                                <input type="radio" name="Q2D" value="D"> Very Good
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p id="Q3">Question 3: How likely are you to recommend it to others?</p>
+                            <div class="options">
+                                <input type="radio" name="Q3A" value="A"> Bad
+                                <input type="radio" name="Q3B" value="B"> Neutral
+                                <input type="radio" name="Q3C" value="C"> Good
+                                <input type="radio" name="Q3D" value="D"> Very Good
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p id="Q4">Question 4: Were the instructions easy to follow?</p>
+                            <div class="options">
+                                <input type="radio" name="Q4A" value="A"> Bad
+                                <input type="radio" name="Q4B" value="B"> Neutral
+                                <input type="radio" name="Q4C" value="C"> Good
+                                <input type="radio" name="Q4D" value="D"> Very Good
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p id="Q5">Question 5: How satisfied are you with the customer support?</p>
+                            <div class="options">
+                                <input type="radio" name="Q5A" value="A"> Bad
+                                <input type="radio" name="Q5B" value="B"> Neutral
+                                <input type="radio" name="Q5C" value="C"> Good
+                                <input type="radio" name="Q5D" value="D"> Very Good
+                            </div>
+                        </div>
+                        <!-- ... Add similar blocks for other questions (Q2, Q3, Q4, Q5) -->
+                        {{!-- <div class="question">
+                            <br>
+                            <br>
+                            <textarea class="form-control suggestion" name="suggestion"
+                                placeholder="Enter your suggestion or comment"></textarea>
+                        </div> --}}
+                        <div class="button-container">
+                            <button type="submit" class="btn btn-primary dropdown-toggle">Submit</button>
+                            <button type="button" onclick="clearForm()"
+                                class="btn btn-primary dropdown-toggle">Clear</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Add this script to the HTML file -->
+
+            <script>
+                function clearForm() {
+                    $('#feedbackForm').trigger('reset');
+                }
+            </script>
+
+        </div>
+        <script>
+            function setupRadioGroup(groupName) {
+                // Get all radio buttons with the specified name attribute
+                const radioButtons = document.querySelectorAll(`input[type="radio"][name^="${groupName}"]`);
+
+                // Add an event listener to each radio button in the group
+                radioButtons.forEach(function (radioButton) {
+                    radioButton.addEventListener('change', function () {
+                        // Unselect all other radio buttons in the same group
+                        radioButtons.forEach(function (rb) {
+                            if (rb !== radioButton) {
+                                rb.checked = false;
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Call the function for each question group
+            setupRadioGroup("Q1");
+            setupRadioGroup("Q2");
+            setupRadioGroup("Q3");
+            setupRadioGroup("Q4");
+            setupRadioGroup("Q5");
+        </script>
+
+
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
+        <script src="assets/plugins/apexchart/chart-data.js"></script>
+        <script src="assets/js/script.js"></script>
+
+</body>
+
+</html>s
