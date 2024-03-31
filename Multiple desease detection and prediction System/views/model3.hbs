@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">ALPHA_CODERS</label>
+        </div>
+        <div class="dashboard " onclick="covid()">
+            <label for="">Covid Detection</label>
+        </div>
+        <div class="dashboard "  onclick="Diabetis()">
+            <label for="">Diabetis Detection</label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Heart Desease Prediction --> </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Heart Desease Detection and Prediction</h3>
+    </div>
+
+    <div class="content1">
+        <div class="managecustomers">
+            <div class="custdet">
+                <label for="">Patient Symptoms</label>
+            </div>
+            <div class="custgrid">
+                <form action="/heartpredict" method="post">
+                    <div class="cid cflex">
+                        <label for="cough">Age</label>
+                        <input type="text" id="firstName" name="Age" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="gender cflex">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                    <div class="cont cflex">
+                        <label for="sorethroat">cp</label>
+                        <input type="text" id="firstName" name="cp" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custname cflex">
+                        <label for="breath">trestbps</label>
+                        <input type="text" id="firstName" name="trestbps" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custdob cflex">
+                        <label for="head">chol</label>
+                        <input type="text" id="firstName" name="chol" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custdor cflex">
+                        <label for="age">Fbs</label>
+                        <input type="text" id="firstName" name="Fbs" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">RestECG</label>
+                        <input type="text" id="firstName" name="RestECG" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Thalac</label>
+                        <input type="text" id="firstName" name="Thalac" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Exang</label>
+                        <input type="text" id="firstName" name="Exang" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Old Peak</label>
+                        <input type="text" id="firstName" name="OldPeak" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Slope</label>
+                        <input type="text" id="firstName" name="Slope" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">CA</label>
+                        <input type="text" id="firstName" name="CA" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Thal</label>
+                        <input type="text" id="firstName" name="Thal" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <button type="submit" class="save">Predict</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="addedcustomers">
+            <div class="result">
+                {{result}}
+            </div>
+            <div class="recommendation">
+                <div class="Recommendhead">
+                    <label for="">Recommendations</label>
+                </div>
+                <br><br><br>
+                <div class="recommendedcontent">
+                    {{#if result}}
+                    <ol>
+                        <li>Healthy Diet</li>
+                        <li>Regular Exercise</li>
+                        <li>Maintain a Healthy Weight.</li>
+                        <li>Quit Smoking.</li>
+                        <li>Limit Alcohol Consumption</li>
+                        <li>Manage Stress</li>
+                        <li>Monitor Blood Pressure</li>
+                    </ol>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function covid() {
+            window.location.href = "/";
+        }
+        function Diabetis() {
+            window.location.href = "model2";
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

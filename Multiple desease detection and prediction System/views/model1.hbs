@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">ALPHA_CODERS</label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Covid Detection --></label>
+        </div>
+        <div class="dashboard" onclick="Diabetis()">
+            <label for="">Diabetis Detection</label>
+        </div>
+        <div class="dashboard" onclick="Heart()">
+            <label for="">Heart Desease Prediction </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Covid Detection and Prediction</h3>
+    </div>
+
+    <div class="content1">
+        <div class="managecustomers">
+            <div class="custdet">
+                <label for="">Patient Symptoms</label>
+            </div>
+            <div class="custgrid">
+                <form action="/covidpredict" method="post">
+                    <div class="cid cflex">
+                        <label for="cough">Cough</label>
+                        <select id="cough" name="cough">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="gender cflex">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
+                            <option value="0">Male</option>
+                            <option value="1">Female</option>
+                        </select>
+                    </div>
+                    <div class="cont cflex">
+                        <label for="sorethroat">Sore-Throat</label>
+                        <select id="sorethroat" name="sorethroat">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="custname cflex">
+                        <label for="breath">Shortness of Breath</label>
+                        <select id="breath" name="breath">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="custdob cflex">
+                        <label for="head">Headache</label>
+                        <select id="head" name="head">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="custdor cflex">
+                        <label for="age">Age_60_And_Above</label>
+                        <select id="age" name="age">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Fever</label>
+                        <select id="fever" name="fever">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div></div>
+                    <button type="submit" class="save">Predict</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="addedcustomers">
+            <div class="result">
+                {{result}}
+            </div>
+            <div class="recommendation">
+                <div class="Recommendhead">
+                    <label for="">Recommendations</label>
+                </div>
+                <br><br><br>
+                <div class="recommendedcontent">
+                    {{#if result}}
+                    <ol>
+                        <li>Reach out to Hospital Immediately</li>
+                        <li>Stay in a separate Room and Use a Different bathroom if you can.</li>
+                        <li>Wash Your Hands often with soap for 20s.</li>
+                        <li>Cover your Mouth With Mask.</li>
+                    </ol>
+
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function Diabetis() {
+            window.location.href = "model2";
+        }
+        function Heart() {
+            window.location.href = "model3";
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

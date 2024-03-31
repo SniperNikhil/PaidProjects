@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">ALPHA_CODERS</label>
+        </div>
+        <div class="dashboard " onclick="covid()">
+            <label for="">Covid Detection</label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Diabetis Detection --></label>
+        </div>
+        <div class="dashboard" onclick="Heart()">
+            <label for="">Heart Desease Prediction </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Diabetis Detection and Prediction</h3>
+    </div>
+
+    <div class="content1">
+        <div class="managecustomers">
+            <div class="custdet">
+                <label for="">Patient Symptoms</label>
+            </div>
+            <div class="custgrid">
+                <form action="/diabetispredict" method="post">
+                    <div class="cid cflex">
+                        <label for="cough">Pregnancies</label>
+                        <input type="text" id="firstName" name="Pregnancies" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="gender cflex">
+                        <label for="gender">Glucose</label>
+                        <input type="text" id="firstName" name="Glucose" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="cont cflex">
+                        <label for="sorethroat">BloodPressure</label>
+                        <input type="text" id="firstName" name="BloodPressure" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custname cflex">
+                        <label for="breath">SkinThickness</label>
+                        <input type="text" id="firstName" name="SkinThickness" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custdob cflex">
+                        <label for="head">Insulin</label>
+                        <input type="text" id="firstName" name="Insulin" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custdor cflex">
+                        <label for="age">BMI</label>
+                        <input type="text" id="firstName" name="BMI" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">DiabetesPedigreeFunction</label>
+                        <input type="text" id="firstName" name="DiabetesPedigreeFunction" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div class="custemail cflex">
+                        <label for="fever">Age</label>
+                        <input type="text" id="firstName" name="Age" pattern="^\d+(\.\d+)?$" title="Please enter a valid integer or decimal number" required>
+                    </div>
+                    <div></div>
+                    <button type="submit" class="save">Predict</button>
+                </form>
+
+            </div>
+        </div>
+        <div class="addedcustomers">
+            <div class="result">
+                {{result}}
+            </div>
+            <div class="recommendation">
+                <div class="Recommendhead">
+                    <label for="">Recommendations</label>
+                </div>
+                <br><br><br>
+                <div class="recommendedcontent">
+                    {{#if result}}
+                    <ol>
+                        <li>Monitor Blood Sugar Levels Regularly</li>
+                        <li>Follow a Balanced Diet.</li>
+                        <li>Exercise Regularly:.</li>
+                        <li>Take Medications as Prescribed.</li>
+                        <li>Manage Stress</li>
+                        <li>Stay Hydrated</li>
+                    </ol>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function covid() {
+            window.location.href = "/";
+        }
+        function Heart() {
+            window.location.href = "model3";
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

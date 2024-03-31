@@ -1,0 +1,14 @@
+
+Contents of Model1 : Covid Detection
+
+covid_trained_model.sav : This is the Deployed trained model which we are making used in temp.py
+
+generated_covid.csv : This is our covid dataset using which we have trained our model
+
+model1.ipynb : This is the source code of the developed machine learning model
+                we have not made use of this in project anywhere because, we have deployed 
+                the trained model , we will be making use of this trained model.
+                You can open this file in google colab to check the source code 
+                and check how we have developed and deployed our model.
+
+temp.py : This is the code used for predicting using the trained model.

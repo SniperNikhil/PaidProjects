@@ -1,0 +1,13 @@
+Contents of Model3 : Heart Desease Detection
+
+heart_diseases_trained_model.sav : This is the Deployed trained model which we are making used in temp.py
+
+heart_disease_data.csv : This is our covid dataset using which we have trained our model
+
+latestmodel3 (1).ipynb : This is the source code of the developed machine learning model
+                we have not made use of this in project anywhere because, we have deployed 
+                the trained model , we will be making use of this trained model.
+                You can open this file in google colab to check the source code 
+                and check how we have developed and deployed our model.
+
+temp.py : This is the code used for predicting using the trained model.
