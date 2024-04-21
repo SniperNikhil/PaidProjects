@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="">Admin Dashboard</label>
+        </div>
+        <div class="dashboard" onclick="OldCheckouts()">
+            <label for="">Old Checkouts </label>
+        </div>
+        <div class="dashboard" onclick="Profile()">
+            <label for="">My Profile </label>
+        </div>
+        <div class="dashboard" onclick="Rooms()">
+            <label for="">Rooms </label>
+        </div>
+        <div class="dashboard currentopen" onclick="Customers()">
+            <label for="">Customers -></label>
+        </div>
+        <div class="dashboard" onclick="CheckIn()">
+            <label for="">Check In </label>
+        </div>
+        <div class="dashboard" onclick="CheckOut()">
+            <label for="">Check Out </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content1">
+        <div class="managecustomers">
+            <div class="custdet">
+                <label for="">Customer Details</label>
+            </div>
+            <div class="searchcust">
+                <select name="" id="customersearch">
+                    <option value="Select">Select</option>
+                    <option value="email">Email</option>
+                    <option value="name">Name</option>
+                    <option value="contact">Contact</option>
+                </select>
+                <input type="text" id="searchtext" required>
+                <button id="searchbtn">Search </button>
+            </div>
+            <div class="custgrid">
+                <div class="cid cflex">
+                    <label for="firstName">CustId</label>
+                    <input type="text" id="custid" name="firstName" required>
+                </div>
+                <div class="gender cflex">
+                    <label for="firstName">Gender</label>
+                    <select name="" id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="cont cflex">
+                    <label for="firstName">Contact</label>
+                    <input type="text" id="contact" name="firstName" required>
+                </div>
+                <div class="custname cflex">
+                    <label for="firstName">Name</label>
+                    <input type="text" id="name" name="firstName" required>
+                </div>
+                <div class="custdob cflex">
+                    <label for="firstName">DOB</label>
+                    <input type="date" id="dob" name="firstName" required>
+                </div>
+                <div class="custdor cflex">
+                    <label for="firstName">DOR</label>
+                    <input type="date" id="dor" name="firstName" required>
+                </div>
+                <div class="custemail cflex">
+                    <label for="firstName">Email</label>
+                    <input type="email" id="email" name="firstName" required>
+                </div>
+                <div class="custnationality cflex">
+                    <label for="firstName">Nationality</label>
+                    <input type="text" id="nationality" name="firstName" required>
+                </div>
+                <div class="custproof cflex">
+                    <label for="firstName">Proof Type</label>
+                    <select name="" id="profftype">
+                        <option value="Select">Select</option>
+                        <option value="pan">PAN</option>
+                        <option value="drivinglicence">Driving License</option>
+                        <option value="adhaar">Adhaar Card</option>
+                        <option value="passport">Passport No</option>
+                    </select>
+                </div>
+                <div class="custaddress cflex">
+                    <label for="firstName">Proof Id No.</label>
+                    <input type="text" id="proofid" name="firstName" required>
+                </div>
+                <div class="custproofidnumber cflex">
+                    <label for="firstName">Address</label>
+                    <textarea placeholder="Type something..." id="address"></textarea>
+                </div>
+
+                <button class="save" id="custsave">Save</button>
+                <button class="update" id="custupdate">Update</button>
+                <button class="delete" id="custdelete">Delete</button>
+                <button class="clear" id="custclear">Clear</button>
+            </div>
+        </div>
+        <div class="addedcustomers">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CustId</th>
+                        <th>Gender</th>
+                        <th>Contact</th>
+                        <th>Name</th>
+                        <th>D.O.B</th>
+                        <th>D.O.R</th>
+                        <th>E-mail</th>
+                        <th>Nationality</th>
+                        <th>Proof Type</th>
+                        <th>Proof Id</th>
+                        <th>Address</th>                  
+                    </tr>
+                </thead>
+                <tbody id="customerTableBody">
+                    {{#each addedcustomers}}
+                    <tr>
+                        <td>{{custid}}</td>
+                        <td>{{gender}}</td>
+                        <td>{{contact}}</td>
+                        <td>{{name}}</td>
+                        <td>{{dob}}</td>
+                        <td>{{dor}}</td>
+                        <td>{{email}}</td>
+                        <td>{{nationality}}</td>
+                        <td>{{profftype}}</td>
+                        <td>{{proofid}}</td>
+                        <td>{{address}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        function OldCheckouts(){
+            window.location.href = "oldcheckouts";
+        }
+        function Profile() {
+            window.location.href = "profile";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function Rooms() {
+            window.location.href = "rooms";
+        }
+        function CheckIn() {
+            window.location.href = "checkin";
+        }
+        function CheckOut() {
+            window.location.href = "checkout";
+        }
+
+    </script>
+    <script src="script.js"></script>
+    <script src="customerscript.js"></script>
+</body>
+
+</html>

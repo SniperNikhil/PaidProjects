@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="" class="dash">Admin Dashboard</label>
+        </div>
+        <div class="dashboard currentopen" onclick="OldCheckouts()">
+            <label for="">Old Checkouts -> </label>
+        </div>
+        <div class="dashboard" onclick="Profile()">
+            <label for="">My Profile </label>
+        </div>
+        <div class="dashboard" onclick="Rooms()">
+            <label for="">Rooms </label>
+        </div>
+        <div class="dashboard" onclick="Customers()">
+            <label for="">Customers </label>
+        </div>
+        <div class="dashboard" onclick="CheckIn()">
+            <label for="">Check In </label>
+        </div>
+        <div class="dashboard" onclick="CheckOut()">
+            <label for="">Check Out </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content">
+        <div class="rooms">
+            <label for="">Rooms</label>
+            <label for="">({{allrooms}})</label>
+        </div>
+        <div class="customers">
+            <label for="">Customers</label>
+            <label for="">({{allCustomers}})</label>
+        </div>
+        <div class="totalcheckin">
+            <label for="">Current Time</label>
+            <label for="" id="currentTimeLabel">(00:00:00)</label>
+        </div>
+        <div class="time">
+            <button class="print" id="printbtn">Print</button>
+        </div>
+        <div class="recentcheckin">
+            <div class="recentcheckinhead">
+                <h4>In-Active Checked-Out Customers</h4>
+            </div>
+            <div class="hometable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SrNo</th>
+                            <th>Name</th>
+                            <th>Invoice</th>
+                            <th>Issue-date</th>
+                            <th>Contact</th>
+                            <th>CheckIn</th>
+                            <th>CheckOut</th>
+                            <th>No. of Days</th>
+                            <th>Floor</th>
+                            <th>Room</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oldcheckoutsTableBody">
+                        {{#each allCheckin}}
+                        <tr>
+                            <td>{{checkinid}}</td>
+                            <td>{{cname}}</td>
+                            <td>{{invoice}}</td>
+                            <td>{{issuedate}}</td>
+                            <td>{{contact}}</td>
+                            <td>{{checkInDate}}</td>
+                            <td>{{checkOutDate}}</td>
+                            <td>{{noofdays}}</td>
+                            <td>{{floorNo}}</td>
+                            <td>{{roomNo}}</td>
+                            <td>{{total}}</td>
+                            <td>{{status}}</td>
+                        </tr>
+                        {{/each}}
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function Profile() {
+            window.location.href = "profile";
+        }
+        function Rooms() {
+            window.location.href = "rooms";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function Customers() {
+            window.location.href = "customers";
+        }
+        function CheckIn() {
+            window.location.href = "checkin";
+        }
+        function CheckOut() {
+            window.location.href = "checkout";
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="oldcheckoutsscript.js"></script>
+</body>
+
+</html>

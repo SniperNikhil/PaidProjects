@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="">Admin Dashboard</label>
+        </div>
+        <div class="dashboard" onclick="OldCheckouts()">
+            <label for="">Old Checkouts </label>
+        </div>
+        <div class="dashboard" onclick="Profile()">
+            <label for="">My Profile </label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Rooms -></label>
+        </div>
+        <div class="dashboard" onclick="Customers()">
+            <label for="">Customers </label>
+        </div>
+        <div class="dashboard" onclick="CheckIn()">
+            <label for="">Check In </label>
+        </div>
+        <div class="dashboard" onclick="CheckOut()">
+            <label for="">Check Out </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content1">
+        <div class="roomshead">
+            <label for="">Manage Hotel Rooms</label>
+        </div>
+        <div class="roomsgrid">
+            <div class="managerooms">
+                <div class="roomshead1">
+                    <label for="">Manage Rooms Details</label>
+                </div>
+                <div class="maindetails">
+                    <div class="cat">
+                        <label for="firstName">Catagory</label>
+                        <select name="" id="roomcategory">
+                            <option value="Select">Select</option>
+                            <option value="AC">AC</option>
+                            <option value="NAC">Non AC</option>
+                            <option value="Delux">Delux</option>
+                            <option value="SuperDelux">Super Delux</option>
+                        </select>
+                    </div>
+                    <div class="floor">
+                        <label for="firstName">Floor No.</label>
+                        <input type="text" id="roomfloorno" oninput="validateNumber(this)" >
+                    </div>
+                    <div class="rno">
+                        <label for="firstName">Room No.</label>
+                        <input type="text" id="roomroomno" oninput="validateNumber(this)">
+                    </div>
+                    <div class="price">
+                        <label for="firstName">Price</label>
+                        <input type="text" id="roomprice" oninput="validateNumber(this)">
+                    </div>
+                    <div class="status">
+                        <label for="firstName">Status</label>
+                        <select name="" id="roomstatus">
+                            <option value="Available">Available</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>
+                    <div>
+                    </div>
+                    <button class="save" id="roomsave">Save</button>
+                    <button class="update" id="roomupdate">Update</button>
+                    <button class="delete" id="roomdelete">Delete</button>
+                    <button class="clear" id="roomclear">Clear</button>
+                </div>
+            </div>
+            <div class="roomsearch">
+                <div class="roomshead2">
+                    <label for="">Added Rooms</label>
+                </div>
+                <div class="searchbox">
+                    <label for="">Room No.</label>
+                    <input type="text" id="searchroom" oninput="validateNumber(this)">
+                    <button id="searchroombtn">Search</button>
+                </div>
+                <div class="addedroomstable">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Room ID</th>
+                                <th>Category</th>
+                                <th>Floor No</th>
+                                <th>Room No</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="roomTableBody">
+                            {{#each addedrooms}}
+                            <tr>
+                                <td>{{roomid}}</td>
+                                <td>{{category}}</td>
+                                <td>{{floor_no}}</td>
+                                <td>{{room_no}}</td>
+                                <td>{{price}}</td>
+                                <td>{{status}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function OldCheckouts(){
+            window.location.href = "oldcheckouts";
+        }
+        function Profile() {
+            window.location.href = "profile";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function Customers() {
+            window.location.href = "customers";
+        }
+        function CheckIn() {
+            window.location.href = "checkin";
+        }
+        function CheckOut() {
+            window.location.href = "checkout";
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="roomscript.js"></script>
+</body>
+
+</html>

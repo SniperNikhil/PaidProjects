@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="">Admin Dashboard </label>
+        </div>
+        <div class="dashboard" onclick="OldCheckouts()">
+            <label for="">Old Checkouts </label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">My Profile -></label>
+        </div>
+        
+        <div class="dashboard" onclick="Rooms()">
+            <label for="">Rooms </label>
+        </div>
+        <div class="dashboard" onclick="Customers()">
+            <label for="">Customers </label>
+        </div>
+        <div class="dashboard" onclick="CheckIn()">
+            <label for="">Check In </label>
+        </div>
+        <div class="dashboard" onclick="CheckOut()">
+            <label for="">Check Out </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content1">
+        <div class="profilehead">
+            <label for="">My Profile</label>
+        </div>
+        <div class="profilemain">
+            <div class="myprofile">
+                <div class="passhead">
+                    <label for="">Profile Details</label>
+                </div>
+                <div class="info">
+                    <label for="">Name :</label>
+                    <label>{{name}}</label>
+                </div>
+
+                <div class="info">
+                    <label for="">To Reduce Complexity</label>
+                    <label class="password">Profile is kept simple</label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update Profile" id="updatename">
+                </div>
+                <div class="updatename" id="nametobeupdated">
+                    <form action="/updateprofile" method="post">
+                        Update Name: <input type="text" placeholder="Enter Name" name="name">
+                        <br>
+                        <input type="submit" value="Update">
+                    </form>
+                </div>
+            </div>
+            <div class="changepassword">
+                <div class="passhead">
+                    <label for="">Change Password</label>
+                </div>
+                <div class="container">
+                    <div class="successmessage">
+                        <label for="">{{list}}</label>
+                    </div>
+                    <form action="/changepassword" method="post">
+                        <div class="form-group">
+                            <label for="name">Password:</label>
+                            <input type="text" id="password" name="name" placeholder="Enter your password">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm Password:</label>
+                            <input type="password" id="confirm_password" name="password"
+                                placeholder="Enter your password">
+                        </div>
+                        <div class="match" style="text-align: center;margin-top:5px">
+                            <span id="error-message" class="error-message"
+                                style="color:rgb(20, 16, 101);font-size:18px;font-weight:bold;margin:auto;"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" id="changepassword" value="Submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function Rooms() {
+            window.location.href = "rooms";
+        }
+        function Customers() {
+            window.location.href = "customers";
+        }
+        function CheckIn() {
+            window.location.href = "checkin";
+        }
+        function CheckOut() {
+            window.location.href = "checkout";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function OldCheckouts(){
+            window.location.href = "oldcheckouts";
+        }
+        if ("{{err}}") {
+            alert("{{err}}")
+        }     
+    </script>
+    <script>
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm_password');
+        const errorMessage = document.getElementById('error-message');
+        const registerButton = document.getElementById('changepassword'); 
+
+        confirmPasswordInput.addEventListener('input', function () {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                errorMessage.textContent = 'Passwords do not match';
+                registerButton.disabled = true;
+            } else {
+                errorMessage.textContent = '';
+                registerButton.disabled = false;
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

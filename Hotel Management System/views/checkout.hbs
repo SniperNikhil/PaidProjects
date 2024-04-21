@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="">Admin Dashboard</label>
+        </div>
+        <div class="dashboard" onclick="OldCheckouts()">
+            <label for="">Old Checkouts </label>
+        </div>
+        <div class="dashboard" onclick="Profile()">
+            <label for="">My Profile </label>
+        </div>
+        <div class="dashboard" onclick="Rooms()">
+            <label for="">Rooms </label>
+        </div>
+        <div class="dashboard" onclick="Customers()">
+            <label for="">Customers</label>
+        </div>
+        <div class="dashboard" onclick="CheckIn()">
+            <label for="">Check In</label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Check Out -> </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content1 c">
+        <div class="checkouthead">
+            <label for="">Check Out Details</label>
+        </div>
+        <div class="searchcchekin">
+            <div class="searchhead">
+                <label for="">Search CheckIn Details</label>
+            </div>
+            <select name="" id="searchfloorno">
+                <option value="Select Floor No">Select Floor No</option>
+                {{#each uniquefloorno}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+            <select name="" id="searchroomno">
+                <option value="Select Room No">Select Room No</option>
+                {{#each checkedinroom}}
+                <option value="{{roomNo}}">{{roomNo}}</option>
+                {{/each}}
+            </select>
+            {{!-- <input type="text" id="firstName" name="firstName" required> --}}
+            <button id="searchcheckin">Search </button>
+        </div>
+        <div class="checkoutsearched">
+            <div class="checkoutcheckindetails">
+                <div class="chead">
+                    <label for="">CheckIn Details</label>
+                </div>
+                <div class="invoiceno">
+                    <label for="firstName">Invoice No.</label>
+                    <input type="text" id="invoice">
+                </div>
+                <div class="namename">
+                    <label for="firstName">Name</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="conctact">
+                    <label for="firstName">Contact No.</label>
+                    <input type="text" id="contact">
+                </div>
+                <div class="roomno">
+                    <label for="firstName">Room No.</label>
+                    <input type="text" id="roomno">
+                </div>
+                <div class="checkininput">
+                    <label for="firstName">Check In</label>
+                    <input type="date" id="checkindate">
+                </div>
+                <div class="checkoutinput">
+                    <label for="firstName">Check Out</label>
+                    <input type="date" id="checkoutdate">
+                </div>
+                <div class="totalbill">
+                    <label for="firstName">Total Bill</label>
+                    <input type="text" id="total">
+                </div>
+                <div class="advance">
+                    <label for="firstName">Advance</label>
+                    <input type="text" id="advance">
+                </div>
+                <div class="balance">
+                    <label for="firstName">Balance</label>
+                    <input type="text" id="balance">
+                </div>
+                <button class="checkoutbutton" id="checkoutbtn">CheckOut</button>
+                <button class="clear" id="clearbtn">Clear</button>
+                <button class="print" id="printbtn">Print</button>
+            </div>
+            <div class="checkoutbill" id="printbill">
+                <div class="header1">
+                    <img src="images.jpg" alt="Hotel Logo">
+                    <div class="billhead">
+                        <h1>Coding.Alphas Hotel</h1>
+                        <p>Address: 123 Main Street, Cityville</p>
+                        <p>Contact: +1234567890</p>
+                        <p for="" style="float: left;">Invoice No:</p>
+                        <p id="billinvoice"> </p>
+                    </div>
+
+                    {{!-- <div></div> --}}
+                </div>
+
+                <div class="billcustomerdetails" >
+                    <div class="adhed">
+                        <label for="">Customer Details</label>
+                    </div>
+                    <div class="cddata">
+                        <div class="cdname">
+                            <label for="">Issue Date:</label>
+                            <label for="" id="billissuedate"></label>
+                        </div>
+                        <div class="cdname">
+                            <label for="">Name :</label>
+                            <label for="" id="billname"></label>
+                        </div>
+                        <div class="cdcontact">
+                            <label for="">Contact :</label>
+                            <label for="" id="billcontact"></label>
+                        </div>
+                        <div class="cdcheckin">
+                            <label for="">CheckIn :</label>
+                            <label for="" id="billcheckindate"></label>
+                        </div>
+                        <div class="cdcheckout">
+                            <label for="">CheckOut :</label>
+                            <label for="" id="billcheckoutdate"></label>
+                        </div>
+                        <div class="cdnoofdays">
+                            <label for="">No of Days :</label>
+                            <label for="" id="billnoofdays"></label>
+                        </div>
+                        <div class="cdroomno">
+                            <label for="">Room No :</label>
+                            <label for="" id="billroomno"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="billtotalamount">
+                    <div class="amount">
+                        <label for="" id="billtotalamount">Rs.</label>
+                    </div>
+                </div>
+                <div class="billnote">
+                    <label for="">Note : </label>
+                    <label for="">Computer Generated bill does not require signature</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        function OldCheckouts(){
+            window.location.href = "oldcheckouts";
+        }
+        function Profile() {
+            window.location.href = "profile";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function Rooms() {
+            window.location.href = "rooms";
+        }
+        function Customers() {
+            window.location.href = "customers";
+        }
+        function CheckIn() {
+            window.location.href = "checkin";
+        }
+
+    </script>
+    <script src="script.js"></script>
+    <script src="checkoutscript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="image">
+            <img src="images.jpg" alt="">
+        </div>
+        <div class="channelname">
+            <label for="">Coding.Alphas</label>
+        </div>
+        <div class="dashboard" onclick="Dashboard()">
+            <label for="">Admin Dashboard</label>
+        </div>
+        <div class="dashboard" onclick="OldCheckouts()">
+            <label for="">Old Checkouts </label>
+        </div>
+        <div class="dashboard" onclick="Profile()">
+            <label for="">My Profile </label>
+        </div>
+        <div class="dashboard" onclick="Rooms()">
+            <label for="">Rooms </label>
+        </div>
+        <div class="dashboard" onclick="Customers()">
+            <label for="">Customers</label>
+        </div>
+        <div class="dashboard currentopen">
+            <label for="">Check In -></label>
+        </div>
+        <div class="dashboard" onclick="CheckOut()">
+            <label for="">Check Out </label>
+        </div>
+        <div class="dashboard" id="logout">
+            <label for="">LogOut </label>
+        </div>
+    </div>
+    <div class="header">
+        <h3>Hotel Management System</h3>
+    </div>
+
+    <div class="content1">
+        <div class="checkinhead">
+            <label>CheckIn Details </label>
+        </div>
+        <div class="checkincontent">
+            <div class="checkinmob cflex">
+                <div>
+                    <label for="firstName">CID/Mob</label>
+                    <input type="text" id="cidormob" name="firstName" required>
+                </div>
+                <div style="width: 90%;">
+                    <button id="view" class="view">View</button>
+                </div>
+            </div>
+
+            <div class="checkinselect cflex">
+                <div class="availa">
+                    <label for="firstName">Available Rooms</label>
+                </div>
+                <div class="abc">
+                    <select name="" id="checkinselect">
+                        <option value="Select">Select</option>
+                        {{#each availableroom}}
+                        <option value="{{room_no}}">{{room_no}} ({{category}})</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div style="width: 90%;">
+                    <button class="fetchroom" id="fetchroom">Fetch Room</button>
+                </div>
+            </div>
+
+            <div class="checkinname cflex">
+                <label for="firstName">Name</label>
+                <input type="text" id="cname">
+            </div>
+            <div class="checkincontact cflex">
+                <label for="firstName">Contact</label>
+                <input type="text" id="contact">
+            </div>
+            <div class="checkincategory cflex">
+                <label for="firstName">Category</label>
+                <input type="text" id="category">
+            </div>
+
+            <div class="checkinfloornumber cflex">
+                <label for="firstName">Floor No.</label>
+                <input type="text" id="floorno">
+            </div>
+            <div class="checkincheckin cflex">
+                <label for="firstName">CheckIn</label>
+                <input type="date" id="checkindate">
+            </div>
+
+            <div class="checkincheckout cflex">
+                <label for="firstName">CheckOut</label>
+                <input type="date" id="checkoutdate">
+            </div>
+            <div class="checkinroomnumber cflex">
+                <label for="firstName">Room No.</label>
+                <input type="text" id="roomno">
+            </div>
+            <div class="checkinprice cflex">
+                <label for="firstName">Price /Day</label>
+                <input type="text" id="price">
+            </div>
+            <div class="checkintotal cflex">
+                <label for="firstName">Total</label>
+                <input type="text" id="total">
+            </div>
+
+            <div class="checkinbalance cflex">
+                <label for="firstName">Balance</label>
+                <input type="text" id="balance">
+            </div>
+            <div class="checkinadvance cflex">
+                <label for="firstName">Advance</label>
+                <input type="text" id="adavance" value="0">
+            </div>
+            <div></div>
+            <button class="bill" id="billbtn">Bill</button>
+            <button class="checkinbtn" id="checkinbtn">CheckIn</button>
+            <button class="clear" id="clearbtn">Clear</button>
+        </div>
+        <div class="tablesearchdiv">
+            <label for="firstName">Customer Mobile No.</label>
+            <input type="text" id="searchcontact">
+            <button class="search" id="searchbtn">Search</button>
+            <button class="update" id="checkinupdate">Update</button>
+            <button class="delete" id="checkindelete">Delete</button>
+        </div>
+        <div class="checkinedcustomers">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>CheckIn</th>
+                        <th>CheckOut</th>
+                        <th>Category</th>
+                        <th>Floor No.</th>
+                        <th>Room No.</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Advance</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="checkinTableBody">
+                    {{#each checkedin}}
+                    <tr>
+                        <td>{{checkinid}}</td>
+                        <td>{{cname}}</td>
+                        <td>{{contact}}</td>
+                        <td>{{checkInDate}}</td>
+                        <td>{{checkOutDate}}</td>
+                        <td>{{category}}</td>
+                        <td>{{floorNo}}</td>
+                        <td>{{roomNo}}</td>
+                        <td>{{price}}</td>
+                        <td>{{total}}</td>
+                        <td>{{advance}}</td>
+                        <td>{{balance}}</td>
+                        <td>{{status}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        function OldCheckouts(){
+            window.location.href = "oldcheckouts";
+        }
+        function Profile() {
+            window.location.href = "profile";
+        }
+        function Dashboard() {
+            window.location.href = "index";
+        }
+        function Rooms() {
+            window.location.href = "rooms";
+        }
+        function Customers() {
+            window.location.href = "customers";
+        }
+        function CheckOut() {
+            window.location.href = "checkout";
+        }
+
+    </script>
+    <script src="script.js"></script>
+    <script src="checkinscript.js"></script>
+</body>
+
+</html>

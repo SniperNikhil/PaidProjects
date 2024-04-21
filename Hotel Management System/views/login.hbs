@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <button class="toggle-button" id="toggleButton">{{list}}</button>
+    <div class="main">
+        <img src="images.jpg" alt="">
+
+        <div class="all">
+            <div>
+                <form action="/login" method="post">
+                    <div class="username">
+                        <label for="">👲</label>
+                        <input type="text" name="name" placeholder="username">
+                    </div>
+                    <div class="password">
+                        <label for="">🔑</label>
+                        <input type="password" name="pass" placeholder="password">
+                    </div>
+                    <div class="btn">
+                        <button type="submit" class="login">LOGIN</button>
+                    </div>
+                    <div class="register">
+                        <a href="/register">Click Here To Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        var toggleButton = document.getElementById('toggleButton');
+
+        function showSuccessMessage() {
+            toggleButton.style.display = 'block';
+            setTimeout(function () {
+                toggleButton.style.display = 'none';
+            }, 15000);
+        }
+        {{script}}
+    </script>
+</body>
+
+</html>
