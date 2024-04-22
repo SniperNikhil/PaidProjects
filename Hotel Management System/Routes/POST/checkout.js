@@ -1,6 +1,7 @@
 const customers = require("../../model/customerSchema");
 const rooms = require("../../model/roomsSchema")
 const checkin = require("../../model/checkinSchema")
+const oldcheckout = require("../../model/oldcheckoutSchema")
 
 var L=[];
 
@@ -74,7 +75,8 @@ function calculateNumberOfDays(checkInDate, checkOutDate) {
 
 const CheckOut = (socket) =>{
     socket.on('Checkout',async(data) =>{
-        try {           
+        try {
+                  
             const updateroom = await rooms.findOneAndUpdate(
                 { room_no: data.roomNo },
                 { $set: {
@@ -93,9 +95,17 @@ const CheckOut = (socket) =>{
                     noofdays:billnoofday
                 }}
             )
+            data.issuedate=issuedate
+            data.noofdays=billnoofday
+            data.status="inactive"
+            data.invoice=L[0]
+            data.total=data.billtotalamount
+            let newCheckin = new oldcheckout(data);
+            const savedCheckin = await newCheckin.save();
             L=[]
             socket.emit("displaybill",data,issuedate,billnoofday)
         } catch (error) {
+            console.log(error)
             socket.emit("checkouterror","Could not Checkout,try again")
         }
     })

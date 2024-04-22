@@ -53,10 +53,10 @@ const Bill = (socket) => {
             const numberOfDays = calculateNumberOfDays(data.checkInDate, data.checkOutDate);
             const total = numberOfDays * data.price
             const balance = total - data.advance
-            const resultData  = {
+            const resultData = {
                 total, balance
             }
-            socket.emit("totalbalance",resultData )
+            socket.emit("totalbalance", resultData)
         } catch (error) {
             socket.emit("viewerror", "Error. Please try again.");
         }
@@ -64,18 +64,55 @@ const Bill = (socket) => {
 }
 
 const CheckIn = (socket) => {
-    socket.on("CheckInData",async(data)=>{
+    socket.on("CheckInData", async (data) => {
         try {
             // console.log(data)
             let newCheckin = new checkin(data);
 
             const existingCheckin = await checkin.findOne({ $and: [{ floorNo: data.floorNo }, { roomNo: data.roomNo }] });
+            // console.log(existingCheckin)
             if (existingCheckin) {
-                socket.emit('viewerror', `Checkin with Floorno ${data.floorNo} and roomno ${data.roomNo} already ocupied`);
-                return;
+                if (existingCheckin.status == 'inactive') {
+                    const updatedCheckin = await checkin.findOneAndUpdate(
+                        { $and: [{ floorNo: data.floorNo }, { roomNo: data.roomNo }] },
+                        {
+                            $set: {
+                                cname: data.cname,
+                                contact: data.contact,
+                                category: data.category,
+                                roomNo: data.roomNo,
+                                price: data.price,
+                                floorNo: data.floorNo,
+                                checkInDate: data.checkInDate,
+                                checkOutDate: data.checkOutDate,
+                                total: data.total,
+                                balance: data.balance,
+                                advance: data.advance,
+                                status:"active"
+                            }
+                        },
+                        { new: true }
+                    );
+
+                    const updatedRoom = await rooms.findOneAndUpdate(
+                        { floor_no: data.floorNo, room_no: data.roomNo },
+                        { $set: { status: "Not Available" } },
+                        { new: true }
+                    );
+
+                    const roomdata = await rooms.find({ status: "Available" })
+                    const allCheckin = await checkin.find({ status: "active" });
+
+                    socket.emit('addcheckinsuccess', 'Checked in successfully', allCheckin, roomdata);
+                    return;
+                } else {
+                    socket.emit('viewerror', `Checkin with Floorno ${data.floorNo} and roomno ${data.roomNo} already ocupied`);
+                    return;
+                }
+
             }
 
-            const savedCheckin= await newCheckin.save();
+            const savedCheckin = await newCheckin.save();
 
             const updatedRoom = await rooms.findOneAndUpdate(
                 { floor_no: data.floorNo, room_no: data.roomNo },
@@ -84,9 +121,9 @@ const CheckIn = (socket) => {
             );
 
             const roomdata = await rooms.find({ status: "Available" })
-            const allCheckin = await checkin.find({status:"active"});
+            const allCheckin = await checkin.find({ status: "active" });
 
-            socket.emit('addcheckinsuccess', 'Checked in successfully', allCheckin,roomdata);
+            socket.emit('addcheckinsuccess', 'Checked in successfully', allCheckin, roomdata);
         } catch (error) {
             console.log(error)
             socket.emit("viewerror", "Could not Checkin");
@@ -98,11 +135,11 @@ const DisplayCheckin = (socket) => {
     socket.on('displaycheckin', async () => {
         try {
             // Retrieve all rooms from the database
-            const displaycheckin = await checkin.find({status:"active"})
+            const displaycheckin = await checkin.find({ status: "active" })
             const roomdata = await rooms.find({ status: "Available" })
 
             // Emit the list of rooms to clients
-            socket.emit('searchcheckinsuccess', displaycheckin,roomdata)
+            socket.emit('searchcheckinsuccess', displaycheckin, roomdata)
         } catch (error) {
             // Emit an error message if an error occurs during room retrieval
             socket.emit('viewerror', 'Could not clear Checkin table please refresh');
@@ -110,9 +147,9 @@ const DisplayCheckin = (socket) => {
     })
 }
 
-const SearchCheckin = (socket) =>{
+const SearchCheckin = (socket) => {
     try {
-        socket.on("searchcheckinvalue",async(searchcontact) =>{
+        socket.on("searchcheckinvalue", async (searchcontact) => {
             const searchedcheckin = await checkin.find({ contact: searchcontact })
             if (searchedcheckin.length > 0) {
                 socket.emit('searchcheckinsuccess', searchedcheckin)
@@ -125,24 +162,26 @@ const SearchCheckin = (socket) =>{
     }
 }
 
-const CheckInUpdate = (socket) =>{
+const CheckInUpdate = (socket) => {
     try {
-        socket.on("CheckInUpdate",async(data) =>{
+        socket.on("CheckInUpdate", async (data) => {
             // console.log(data)
             const updatedCheckin = await checkin.findOneAndUpdate(
                 { $and: [{ floorNo: data.floorNo }, { roomNo: data.roomNo }] },
-                { $set: {
-                    checkInDate: data.checkInDate,
-                    checkOutDate: data.checkOutDate,
-                    total: data.total,
-                    balance: data.balance,
-                    advance: data.advance,
-                }},
+                {
+                    $set: {
+                        checkInDate: data.checkInDate,
+                        checkOutDate: data.checkOutDate,
+                        total: data.total,
+                        balance: data.balance,
+                        advance: data.advance,
+                    }
+                },
                 { new: true }
             );
 
             if (updatedCheckin) {
-                const updatedCheckin = await checkin.find({status:"active"});
+                const updatedCheckin = await checkin.find({ status: "active" });
                 socket.emit('updatecheckinsuccess', 'Checkin Updated successfully:', updatedCheckin);
             } else {
                 // Emit an error message if the customer is not found or update fails
@@ -154,20 +193,22 @@ const CheckInUpdate = (socket) =>{
     }
 }
 
-const CheckInDelete = (socket) =>{
+const CheckInDelete = (socket) => {
     try {
-        socket.on('CheckInDelete',async(data) =>{
+        socket.on('CheckInDelete', async (data) => {
             const deletedCheckin = await checkin.findOneAndDelete({ $and: [{ floorNo: data.floorNo }, { roomNo: data.roomNo }] });
 
             if (deletedCheckin) {
                 const updateroom = await rooms.findOneAndUpdate(
                     { $and: [{ floor_no: data.floorNo }, { room_no: data.roomNo }] },
-                    { $set: {
-                        status: "Available",
-                    }},
+                    {
+                        $set: {
+                            status: "Available",
+                        }
+                    },
                     { new: true }
                 );
-                const remainingCheckin = await checkin.find({status:"active"});
+                const remainingCheckin = await checkin.find({ status: "active" });
 
                 socket.emit('updatecheckinsuccess', 'Checkin deleted successfully', remainingCheckin, true);
             } else {
@@ -179,11 +220,11 @@ const CheckInDelete = (socket) =>{
     }
 }
 
-module.exports = { 
-    checkinview, 
-    fetchroom, 
+module.exports = {
+    checkinview,
+    fetchroom,
     Bill,
-    CheckIn ,
+    CheckIn,
     DisplayCheckin,
     SearchCheckin,
     CheckInUpdate,
